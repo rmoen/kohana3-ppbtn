@@ -1,0 +1,13 @@
+ * @author	Rob Moen
+ * @class	Generates Encrypted Paypal Btn
+ * @version 	1.0
+ *
+	usage:
+	
+	$item->name = '';
+	$item->number = '';
+	$item->amount = '1';
+	$item->no_shipping = true;
+	$item->custom
+	
+	echo $pp->getBtn($item);

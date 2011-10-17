@@ -1,13 +1,22 @@
- * @author	Rob Moen
- * @class	Generates Encrypted Paypal Btn
- * @version 	1.0
- *
-	usage:
-	
-	$item->name = '';
-	$item->number = '';
-	$item->amount = '1';
-	$item->no_shipping = true;
-	$item->custom
-	
-	echo $pp->getBtn($item);
+
+/
+@author	Rob Moen
+@class	Generates Encrypted Paypal Btn
+@version 1.1
+
+Requires Making Key:
+openssl genrsa -out my-prvkey.pem 1024
+openssl req -new -key my-prvkey.pem -x509 -days 365 -out my-pubcert.pem
+Upload pub cert to paypal.
+Download paypal public cert.
+Block unencrypted payment buttons
+
+usage:
+
+$item->name = '';
+$item->number = '';
+$item->amount = '1';
+$item->no_shipping = true;
+$item->custom
+
+echo $pp->getBtn($item);

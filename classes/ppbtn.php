@@ -76,7 +76,6 @@
 			$openssl_cmd = "(".$this->openssl." smime -sign -signer ".$this->certfile." -inkey ".$this->keyfile." " .
 								"-outform der -nodetach -binary <<_EOF_\n".$data."\n_EOF_\n) | " .
 								$this->openssl." smime -encrypt -des3 -binary -outform pem ".$this->paypal_certfile;
-			echo $openssl_cmd;
 			exec($openssl_cmd, $output, $error);
 		
 			if (!$error) {
@@ -87,16 +86,13 @@
 		}
 		
 		public function returnBtnHTML($encrypted){
-
-$form = "
-<form action='https://www.paypal.com/cgi-bin/webscr' method='post' target=_blank>
-<input type='hidden' name='cmd' value='_s-xclick'>
-<input type='hidden' name='encrypted' value='{$encrypted}'>
-<input type='submit' value='Pay'>
-</form>		
-";
-			
-
+			$form = "
+			<form action='https://www.paypal.com/cgi-bin/webscr' method='post' target=_blank>
+			<input type='hidden' name='cmd' value='_s-xclick'>
+			<input type='hidden' name='encrypted' value='{$encrypted}'>
+			<input type='submit' value='Pay'>
+			</form>		
+			";
 			return $form;			
 		}
  	} //end class
